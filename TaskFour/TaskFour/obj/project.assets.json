@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Bootcamp\\TaskFour\\TaskFour\\TaskFour.csproj",
+      "projectUniqueName": "D:\\Bootcamp\\Tasks\\TaskFour\\TaskFour\\TaskFour.csproj",
       "projectName": "TaskFour",
-      "projectPath": "D:\\Bootcamp\\TaskFour\\TaskFour\\TaskFour.csproj",
+      "projectPath": "D:\\Bootcamp\\Tasks\\TaskFour\\TaskFour\\TaskFour.csproj",
       "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-      "outputPath": "D:\\Bootcamp\\TaskFour\\TaskFour\\obj\\",
+      "outputPath": "D:\\Bootcamp\\Tasks\\TaskFour\\TaskFour\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -132,6 +132,8 @@
         private int withdrawalCount;  
         private const int MaxWithdrawalsPerYear = 3;
         private const double MaxWithdrawalPercentage = 0.2;
+        private int lastWithdrawalYear;
+
 
         public override bool Deposit(double amount)
         {
@@ -153,6 +155,15 @@
         }
         public override bool Withdraw(double amount)
         {
+            int currentYear = DateTime.Now.Year;
+
+            
+            if (currentYear != lastWithdrawalYear)
+            {
+                withdrawalCount = 0; 
+                lastWithdrawalYear = currentYear; 
+            }
+
             if (withdrawalCount >= MaxWithdrawalsPerYear)
             {
                 Console.WriteLine("Withdrawal limit reached for this year.");
