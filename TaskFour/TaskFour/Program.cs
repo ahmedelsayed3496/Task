@@ -126,12 +126,14 @@
         {
             Rate = rate;
             count = 0;
+            // علشان نرجع بالسنة بس هنستخدم .Year
+            lastWithdrawYear = DateTime.Now.Year;
         }
 
         public double Rate { get; set; }
-        private int count;  
         private const int withdrawPerYear = 3;
         private const double percentageAllowed = 0.2;
+        private int count;  
         private int lastWithdrawYear;
 
 
@@ -166,12 +168,12 @@
 
             if (count >= withdrawPerYear)
             {
-                Console.WriteLine("Withdrawal limit reached for this year.");
+                Console.WriteLine("Withdraw limit reached for this year.");
                 return false;
             }
-            else if (amount > Balance * percentageAllowed)
+            else if (amount > (Balance * percentageAllowed))
             {
-                Console.WriteLine("Withdrawal exceeds the 20% limit of the account balance.");
+                Console.WriteLine("Withdraw exceeds the 20% limit of the account balance.");
                 return false;
             }
             else if (Balance >= amount)
@@ -182,7 +184,7 @@
             }
             else
             {
-                Console.WriteLine("Insufficient balance for the withdrawal.");
+                Console.WriteLine("Something wrong.");
                 return false;
             }
            
@@ -244,7 +246,7 @@
             AccountUtil.Deposit(trustAccounts, 6000);
             AccountUtil.Withdraw(trustAccounts, 2000);
             AccountUtil.Withdraw(trustAccounts, 3000);
-            AccountUtil.Withdraw(trustAccounts, 500);
+            AccountUtil.Withdraw(trustAccounts, 500);            
 
             Console.WriteLine("------------");
              
