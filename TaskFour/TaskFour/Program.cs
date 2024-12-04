@@ -131,7 +131,7 @@
         public double Rate { get; set; }
         private int count;  
         private const int withdrawPerYear = 3;
-        private const double amountAllowed = 0.2;
+        private const double percentageAllowed = 0.2;
         private int lastWithdrawYear;
 
 
@@ -167,23 +167,25 @@
             if (count >= withdrawPerYear)
             {
                 Console.WriteLine("Withdrawal limit reached for this year.");
-                return false;  
+                return false;
             }
-
-            if (amount > Balance * amountAllowed)
+            else if (amount > Balance * percentageAllowed)
             {
                 Console.WriteLine("Withdrawal exceeds the 20% limit of the account balance.");
-                return false;  
+                return false;
             }
-
-            if (Balance >= amount)  
+            else if (Balance >= amount)
             {
-                Balance -= amount; 
-                count++;  
+                Balance -= amount;
+                count++;
                 return true;
             }
-
-            return false;  
+            else
+            {
+                Console.WriteLine("Insufficient balance for the withdrawal.");
+                return false;
+            }
+           
 
         }
         public override string ToString()
