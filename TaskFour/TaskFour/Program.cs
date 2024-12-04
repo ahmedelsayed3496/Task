@@ -125,14 +125,14 @@
         public TrustAccount(string name = "Unnamed Account", double balance = 0, double rate = 0) : base(name, balance) 
         {
             Rate = rate;
-            withdrawalCount = 0;
+            count = 0;
         }
 
         public double Rate { get; set; }
-        private int withdrawalCount;  
-        private const int MaxWithdrawalsPerYear = 3;
-        private const double MaxWithdrawalPercentage = 0.2;
-        private int lastWithdrawalYear;
+        private int count;  
+        private const int withdrawPerYear = 3;
+        private const double amountAllowed = 0.2;
+        private int lastWithdrawYear;
 
 
         public override bool Deposit(double amount)
@@ -158,19 +158,19 @@
             int currentYear = DateTime.Now.Year;
 
             
-            if (currentYear != lastWithdrawalYear)
+            if (currentYear != lastWithdrawYear)
             {
-                withdrawalCount = 0; 
-                lastWithdrawalYear = currentYear; 
+                count = 0; 
+                lastWithdrawYear = currentYear; 
             }
 
-            if (withdrawalCount >= MaxWithdrawalsPerYear)
+            if (count >= withdrawPerYear)
             {
                 Console.WriteLine("Withdrawal limit reached for this year.");
                 return false;  
             }
 
-            if (amount > Balance * MaxWithdrawalPercentage)
+            if (amount > Balance * amountAllowed)
             {
                 Console.WriteLine("Withdrawal exceeds the 20% limit of the account balance.");
                 return false;  
@@ -179,7 +179,7 @@
             if (Balance >= amount)  
             {
                 Balance -= amount; 
-                withdrawalCount++;  
+                count++;  
                 return true;
             }
 
@@ -196,7 +196,7 @@
     {
         static void Main(string[] args)
         {
-            // Accounts
+            
             var accounts = new List<Account>();
             accounts.Add(new Account());
             accounts.Add(new Account("Larry"));
@@ -207,7 +207,7 @@
             AccountUtil.Deposit(accounts, 1000);
             AccountUtil.Withdraw(accounts, 2000);
 
-            // Savings
+            
             var savAccounts = new List<Account>();
             savAccounts.Add(new SavingsAccount());
             savAccounts.Add(new SavingsAccount("Superman"));
@@ -218,7 +218,7 @@
             AccountUtil.Deposit(savAccounts, 1000);
             AccountUtil.Withdraw(savAccounts, 2000);
 
-            // Checking
+            
             var checAccounts = new List<Account>();
             checAccounts.Add(new CheckingAccount());
             checAccounts.Add(new CheckingAccount("Larry2"));
@@ -230,7 +230,7 @@
             AccountUtil.Withdraw(checAccounts, 2000);
             AccountUtil.Withdraw(checAccounts, 2000);
 
-            // Trust
+            
             var trustAccounts = new List<Account>();
             trustAccounts.Add(new TrustAccount());
             trustAccounts.Add(new TrustAccount("Superman2"));
