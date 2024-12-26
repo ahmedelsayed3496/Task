@@ -1,0 +1,5 @@
+Sales office (Num, loc , employee_id)
+Employee (id, name, office_Num)
+Property (id, add, city, state, zip, office_Num)
+Owner (id, name )
+Property_Owner(property_id, owner_id, percent_owned)
