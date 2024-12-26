@@ -1,0 +1,8 @@
+Ward (id, name, nurse_id)
+Patient ( id, name, dob, ward_id, consultant_id)
+patient_consultant(patient_id, consultant_id)
+Nurse ( id, name, ward_id)
+Consultant (id, name)
+Drug (code, rec_Dosage)
+Drug_brand(drug_code, brand)
+patient_drug_nurse( patient_id , drug_code, nurse_id, date, time, dosage)
